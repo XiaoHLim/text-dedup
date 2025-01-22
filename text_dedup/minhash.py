@@ -294,7 +294,12 @@ def main(
 
         with timer("Saving"):
             final_data = final_data.remove_columns([CLUSTER_COLUMN, INDEX_COLUMN])
-            final_data.save_to_disk(io_args.output)
+            if os.path.isdir(io_args.output):
+                final_data.to_parquet(
+                    os.path.join(io_args.output, "data", "data.parquet"),
+                )
+            else:
+                final_data.to_pandas().to_parquet(io_args.output, index=False)
             if io_args.debug:
                 uf.dump(os.path.join(io_args.output, "uf.pkl"), id2id=id2id)
 
