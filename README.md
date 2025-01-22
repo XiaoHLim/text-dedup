@@ -11,7 +11,7 @@ pip install text-dedup
 or
 
 ```bash
-pip install git+https://github.com/ChenghaoMou/text-dedup
+pip install git+https://github.com/XiaoHLim/text-dedup
 ```
 
 ## Documentation
